@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weimarer Republik 1924-1933</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .card-img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
+        <!-- Card 0 -->
         <div class="card" id="card0">
             <div class="card-inner" onclick="flipCard(this)">
                 <div class="card-front">
@@ -23,10 +30,11 @@
                         <li>1926: Friedensnobelpreis für Stresemann und Aristide Briand</li>
                         <li>Aussöhnung mit Frankreich</li>
                     </ul>
-
                 </div>
             </div>
         </div>
+        
+        <!-- Card 1 -->
         <div class="card" id="card1">
             <div class="card-inner" onclick="flipCard(this)">
                 <div class="card-front">
@@ -42,6 +50,8 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Card 2 -->
         <div class="card" id="card2">
             <div class="card-inner" onclick="flipCard(this)">
                 <div class="card-front">
@@ -53,10 +63,11 @@
                         <li>Gegenmaßnahme zur Harzburger Front</li>
                         <li>Beteiligte: SPD, Allgemeiner Deutscher Gewerkschaftsbund, Reichsbanner Schwarz-Rot-Gold</li>
                     </ul>
-                    
                 </div>
             </div>
         </div>
+        
+        <!-- Card 3 -->
         <div class="card" id="card3">
             <div class="card-inner" onclick="flipCard(this)">
                 <div class="card-front">
@@ -66,31 +77,34 @@
                     <ul>
                         <li>30. Januar 1933: Adolf Hitler wird zum Reichskanzler ernannt</li>
                     </ul>
-
                 </div>
             </div>
         </div>
+        
+        <!-- Card 4 (New card with image) -->
         <div class="card" id="card4">
             <div class="card-inner" onclick="flipCard(this)">
                 <div class="card-front">
                     <h2>Dawesplan</h2>
                 </div>
                 <div class="card-back">
-                    <img src="images/vertrag.png">
+                    <img src="images/vertrag.png" alt="gerd">
                 </div>
             </div>
         </div>
     </div>
+    
+    <!-- Pagination Buttons -->
     <div class="pagination">
         <button onclick="prevCard()">◀</button>
         <button onclick="generateAndPlayAudio()">Vorlesen</button>
         <button onclick="nextCard()">▶</button>
     </div>
 
+    <!-- JavaScript -->
     <script>
         let currentCard = 0;
         const cards = document.querySelectorAll('.card');
-        const apiUrl = '/api/generate-audio';
     
         function showCard(index) {
             cards.forEach((card, i) => {
@@ -99,14 +113,14 @@
         }
     
         function nextCard() {
-        currentCard = (currentCard + 1) % cards.length;
-        showCard(currentCard);
-    }
-
-    function prevCard() {
-        currentCard = (currentCard - 1 + cards.length) % cards.length;
-        showCard(currentCard);
-    }
+            currentCard = (currentCard + 1) % cards.length;
+            showCard(currentCard);
+        }
+    
+        function prevCard() {
+            currentCard = (currentCard - 1 + cards.length) % cards.length;
+            showCard(currentCard);
+        }
     
         function flipCard(element) {
             element.classList.toggle('is-flipped');
@@ -123,6 +137,5 @@
         // Initialize
         showCard(currentCard);
     </script>
-    
 </body>
 </html>
