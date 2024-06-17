@@ -23,10 +23,61 @@
                         <li>1926: Friedensnobelpreis für Stresemann und Aristide Briand</li>
                         <li>Aussöhnung mit Frankreich</li>
                     </ul>
+                    <div class="audio-button" onclick="playAudio('stresemann')">
+                        <img src="images/speaker.png" alt="Audio abspielen">
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Weitere Karten hier einfügen -->
+        <div class="card" id="card1">
+            <div class="card-inner" onclick="flipCard(this)">
+                <div class="card-front">
+                    <h2>Harzburger Front</h2>
+                </div>
+                <div class="card-back">
+                    <ul>
+                        <li>11. Oktober 1931: Gründung der Harzburger Front in Bad Harzburg</li>
+                        <li>Bündnis antidemokratischer Nationalisten und Rechtsextremisten</li>
+                        <li>Mitglieder: NSDAP, DNVP, Stahlhelm (Bund der Frontsoldaten)</li>
+                        <li>Ziel: Bekämpfung der Republik</li>
+                    </ul>
+                    <div class="audio-button" onclick="playAudio('harzburger')">
+                        <img src="images/speaker.png" alt="Audio abspielen">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card" id="card2">
+            <div class="card-inner" onclick="flipCard(this)">
+                <div class="card-front">
+                    <h2>Eiserne Front</h2>
+                </div>
+                <div class="card-back">
+                    <ul>
+                        <li>Dezember 1931: Gründung der Eisernen Front</li>
+                        <li>Gegenmaßnahme zur Harzburger Front</li>
+                        <li>Beteiligte: SPD, Allgemeiner Deutscher Gewerkschaftsbund, Reichsbanner Schwarz-Rot-Gold</li>
+                    </ul>
+                    <div class="audio-button" onclick="playAudio('eiserne')">
+                        <img src="images/speaker.png" alt="Audio abspielen">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card" id="card3">
+            <div class="card-inner" onclick="flipCard(this)">
+                <div class="card-front">
+                    <h2>Hitlers Ernennung</h2>
+                </div>
+                <div class="card-back">
+                    <ul>
+                        <li>30. Januar 1933: Adolf Hitler wird zum Reichskanzler ernannt</li>
+                    </ul>
+                    <div class="audio-button" onclick="playAudio('hitler')">
+                        <img src="images/speaker.png" alt="Audio abspielen">
+                    </div>
+                </div>
+            </div>
     </div>
     <div class="pagination">
         <button onclick="prevCard()">◀</button>
@@ -46,14 +97,14 @@
         }
     
         function nextCard() {
-            currentCard = (currentCard + 1) % cards.length;
-            showCard(currentCard);
-        }
-    
-        function prevCard() {
-            currentCard = (currentCard - 1 + cards.length) % cards.length;
-            showCard(currentCard);
-        }
+        currentCard = (currentCard + 1) % cards.length;
+        showCard(currentCard);
+    }
+
+    function prevCard() {
+        currentCard = (currentCard - 1 + cards.length) % cards.length;
+        showCard(currentCard);
+    }
     
         function flipCard(element) {
             element.classList.toggle('is-flipped');
