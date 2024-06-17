@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weimarer Republik 1924-1933</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card" id="card0">
+            <div class="card-inner" onclick="flipCard(this)">
+                <div class="card-front">
+                    <h2>Gustav Stresemann</h2>
+                </div>
+                <div class="card-back">
+                    <ul>
+                        <li>August bis November 1923: Reichskanzler</li>
+                        <li>Beendigung der Ruhrkrise und Hyperinflation</li>
+                        <li>1923–1929: Außenminister</li>
+                        <li>Wichtige Verträge: Locarno-Verträge</li>
+                        <li>1926: Beitritt Deutschlands zum Völkerbund</li>
+                        <li>1926: Friedensnobelpreis für Stresemann und Aristide Briand</li>
+                        <li>Aussöhnung mit Frankreich</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Weitere Karten hier einfügen -->
+    </div>
+    <div class="pagination">
+        <button onclick="prevCard()">◀</button>
+        <button onclick="generateAndPlayAudio()">Vorlesen</button>
+        <button onclick="nextCard()">▶</button>
+    </div>
+
+    <script>
+        let currentCard = 0;
+        const cards = document.querySelectorAll('.card');
+        const apiUrl = '/api/generate-audio';
+    
+        function showCard(index) {
+            cards.forEach((card, i) => {
+                card.style.display = i === index ? 'block' : 'none';
+            });
+        }
+    
+        function nextCard() {
+            currentCard = (currentCard + 1) % cards.length;
+            showCard(currentCard);
+        }
+    
+        function prevCard() {
+            currentCard = (currentCard - 1 + cards.length) % cards.length;
+            showCard(currentCard);
+        }
+    
+        function flipCard(element) {
+            element.classList.toggle('is-flipped');
+        }
+    
+        function generateAndPlayAudio() {
+            const currentCardContent = cards[currentCard].querySelector('.card-back').textContent.trim();
+            const speechSynth = window.speechSynthesis;
+             
+            const newUtter = new SpeechSynthesisUtterance(currentCardContent);
+            speechSynth.speak(newUtter);
+        }
+    
+        // Initialize
+        showCard(currentCard);
+    </script>
+    
+</body>
+</html>
